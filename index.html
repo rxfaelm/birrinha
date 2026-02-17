@@ -6,38 +6,37 @@
     <title>Restaurante da Birrinha</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
         :root {
             --verde: #10b981;
             --preto: #000000;
+            --cinza-deep: #0a0a0a;
+            --cinza-borda: #1f1f1f;
+            --texto-muted: #a1a1aa;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
             background-color: var(--preto);
             color: white;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* AQUI ESTÁ A CORREÇÃO DEFINITIVA */
+        /* FONTE ELEGANTE - FORÇANDO LETRAS MINÚSCULAS */
         .nome-correto {
-            /* Força a fonte elegante */
             font-family: 'Playfair Display', serif !important;
             font-style: italic !important;
-            
-            /* FORÇA A SAIR DA CAIXA ALTA */
             text-transform: none !important; 
             font-variant: normal !important;
             font-weight: 700 !important;
-            
-            /* Ajuste de respiro entre letras */
-            letter-spacing: 0px !important;
         }
 
-        /* Estilo da Nav */
+        /* Navbar */
         nav {
             position: fixed;
             top: 0; width: 100%;
@@ -52,7 +51,7 @@
         nav.scrolled {
             background: rgba(0, 0, 0, 0.98);
             padding: 15px 50px;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid var(--cinza-borda);
         }
 
         .nav-brand {
@@ -79,7 +78,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 10vw, 6rem); /* Fonte que se ajusta ao tamanho da tela */
+            font-size: clamp(3rem, 10vw, 6rem);
             line-height: 1.1;
             margin-top: 20px;
         }
@@ -98,12 +97,88 @@
             transition: 0.3s;
         }
 
+        /* Seções Gerais */
+        section.content {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card-info {
+            background: var(--cinza-deep);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--cinza-borda);
+            text-align: center;
+        }
+
+        .card-info h3 { color: var(--verde); margin-bottom: 5px; font-size: 1.5rem; }
+        .card-info p { font-size: 0.8rem; text-transform: uppercase; color: var(--texto-muted); }
+
+        /* Sobre */
+        .sobre-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 100px 0;
+        }
+
+        .sobre-grid img {
+            width: 100%;
+            border-radius: 30px;
+            border: 1px solid var(--cinza-borda);
+        }
+
+        .sobre-texto h2 { font-size: 3rem; margin-bottom: 20px; }
+        .sobre-texto p { color: var(--texto-muted); font-size: 1.1rem; margin-bottom: 30px; }
+
+        /* Avaliações */
+        .avaliacoes { background: var(--cinza-deep); padding: 100px 20px; text-align: center; }
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-review {
+            background: var(--preto);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid var(--cinza-borda);
+            text-align: left;
+        }
+
+        /* Contato */
+        .contato { padding: 100px 20px; text-align: center; }
+        .contato-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 900px;
+            margin: 50px auto 0;
+        }
+
         /* Mobile */
         @media (max-width: 768px) {
             nav { padding: 20px; }
             nav.scrolled { padding: 15px 20px; }
             .hero h1 { font-size: 3.5rem; }
-            .nav-brand { font-size: 1.2rem; }
+            .sobre-grid, .contato-grid { grid-template-columns: 1fr; }
+            .sobre-texto { text-align: center; }
         }
     </style>
 </head>
@@ -111,23 +186,92 @@
 
     <nav id="navbar">
         <div class="nav-brand nome-correto">Restaurante da Birrinha</div>
-        <a href="https://wa.me/5563992641584" style="background: var(--verde); color: white; padding: 8px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 0.8rem;">RESERVAR</a>
+        <a href="https://wa.me/5563992641584" style="background: var(--verde); color: white; padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 0.8rem;">RESERVAR</a>
     </nav>
 
     <section class="hero">
         <img src="https://drive.google.com/thumbnail?id=1MuB3e9DkKcZwyH-ajXOXZPG-9Xx-deuK&sz=w300" style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid var(--verde);">
-        
         <p style="text-transform: uppercase; letter-spacing: 4px; font-size: 0.7rem; color: var(--verde); margin-top: 20px;">Sabor Caseiro em Araguaína</p>
-        
         <h1 class="nome-correto">
             Restaurante da <br> <span>Birrinha</span>
         </h1>
-
         <a href="https://wa.me/5563992641584" class="btn-whatsapp">Chamar no WhatsApp</a>
     </section>
 
+    <section class="content">
+        <div class="grid-info">
+            <div class="card-info">
+                <p>Preço Médio</p>
+                <h3>R$ 20–40</h3>
+            </div>
+            <div class="card-info">
+                <p>Tempo Médio</p>
+                <h3>15-45 min</h3>
+            </div>
+            <div class="card-info">
+                <p>Serviço</p>
+                <h3>Buffet Livre</h3>
+            </div>
+            <div class="card-info">
+                <p>Horário</p>
+                <h3>11:00 - 14:00</h3>
+            </div>
+        </div>
+
+        <div class="sobre-grid" id="sobre">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwerTJa92_iVwBamIw-c-CSCre4E02xwA3hIEr17LgaolL6ORRtU2lwNZJ8uoRvfS9EukoiyBbeZXaOz_EMk2zs4b3xjkSvZn-m0rOnXW-Vs7s8xNUBFzyRa8UXrlQsj3eRj8ZKawiQ=w289-h156-n-k-no" alt="Nosso Buffet">
+            <div class="sobre-texto">
+                <h2 class="nome-correto">Qualidade e Variedade</h2>
+                <p>"Muito boa a comida, muita variedade de saladas e carnes!" Oferecemos uma experiência completa com o tempero que Araguaína ama.</p>
+                <div style="background: var(--cinza-deep); padding: 20px; border-radius: 15px; border: 1px solid var(--cinza-borda);">
+                    <p style="color: white; margin-bottom: 10px;">📍 Lot. Couto Magalhães, Araguaína - TO</p>
+                    <p style="color: var(--verde); font-weight: bold;">Aberto de Quarta a Segunda</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="avaliacoes">
+        <h2 class="nome-correto" style="font-size: 3rem;">O que dizem os clientes</h2>
+        <div class="review-grid">
+            <div class="card-review">
+                <p style="color: var(--verde); margin-bottom: 15px;">★★★★★</p>
+                <p class="italic">"Muito boa a comida, muita variedade de saladas e carnes!"</p>
+                <p style="margin-top: 20px; font-size: 0.8rem; color: var(--texto-muted);">Google Review</p>
+            </div>
+            <div class="card-review">
+                <p style="color: var(--verde); margin-bottom: 15px;">★★★★★</p>
+                <p class="italic">"Ótimo custo benefício e ambiente agradável. Recomendo a todos."</p>
+                <p style="margin-top: 20px; font-size: 0.8rem; color: var(--texto-muted);">Google Review</p>
+            </div>
+            <div class="card-review">
+                <p style="color: var(--verde); margin-bottom: 15px;">★★★★★</p>
+                <p class="italic">"Melhor buffet de Araguaína. Comida sempre fresca e saborosa."</p>
+                <p style="margin-top: 20px; font-size: 0.8rem; color: var(--texto-muted);">Google Review</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contato">
+        <h2 class="nome-correto" style="font-size: 3rem;">Venha nos visitar</h2>
+        <div class="contato-grid">
+            <div style="background: var(--cinza-deep); padding: 40px; border-radius: 30px; border: 1px solid var(--cinza-borda); text-align: left;">
+                <h4 class="nome-correto" style="color: var(--verde); font-size: 1.5rem; margin-bottom: 15px;">Endereço</h4>
+                <p>Lot. Couto Magalhães, Araguaína - TO<br>CEP: 77818-340</p>
+            </div>
+            <div style="background: var(--cinza-deep); padding: 40px; border-radius: 30px; border: 1px solid var(--cinza-borda); text-align: left;">
+                <h4 class="nome-correto" style="color: var(--verde); font-size: 1.5rem; margin-bottom: 15px;">Contato</h4>
+                <p>Telefone: (63) 99264-1584</p>
+                <p>Instagram: @restaurantedabirrinha_</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 50px; text-align: center; border-top: 1px solid var(--cinza-borda); color: var(--texto-muted); font-size: 0.8rem;">
+        © 2024 Restaurante da Birrinha. Todos os direitos reservados.
+    </footer>
+
     <script>
-        // Script para mostrar a nav no scroll
         window.onscroll = function() {
             var navbar = document.getElementById("navbar");
             if (window.pageYOffset > 100) {
@@ -136,7 +280,7 @@
                 navbar.classList.remove("scrolled");
             }
         };
+        lucide.createIcons();
     </script>
-
 </body>
 </html>
