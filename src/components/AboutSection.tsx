@@ -1,0 +1,4 @@
+import { ArrowUpRight, MapPin, Sparkles } from 'lucide-react'
+import { restaurant } from '../data/birrinhaData'
+
+export function AboutSection(){return <section className="section about-section" id="sobre"><div className="about-image"><div className="image-caption"><Sparkles size={16}/><span>Tempero que acolhe.<br/><b>Variedade para todos os gostos.</b></span></div></div><div className="about-copy"><p className="eyebrow">A CASA DA BIRRINHA</p><h2>Qualidade e<br/><em>variedade.</em></h2><p>Um almoço gostoso começa com bons ingredientes e termina com vontade de voltar. Na Birrinha, você encontra buffet livre e o sabor caseiro que Araguaína conhece.</p><div className="location-pill"><MapPin size={18}/><span>{restaurant.address}</span></div><a className="text-link" href={restaurant.mapsUrl} target="_blank" rel="noreferrer">Como chegar <ArrowUpRight size={16}/></a></div></section>}
